@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="main_layout.html">
+
+
+<div layout:fragment="siteContent">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>DEADLINE DATE</th>
+                <th>IS COMPLETED</th>
+                <th>DETAILS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tsk: ${tasky}">
+                <td th:text="${tsk.id}"></td>
+                <td th:text="${tsk.name}"></td>
+                <td th:text="${tsk.deadlineDate}"></td>
+                <td th:text="${tsk.completed?'YES':'NO'}"></td>
+                <td>
+                    <a th:href="@{'/details/' + ${tsk.id}}" class="btn btn-primary btn-sm">DETAILS</a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+</html>
